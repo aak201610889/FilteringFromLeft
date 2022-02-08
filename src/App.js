@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState } from 'react';
+import data from './data';
+import Name from './Name';
+import Job from './Job';
 function App() {
+
+  const [Data, setData] = useState(data);
+
+
+  const allName  =[... new Set(data.map((item) => item.name))];
+  const [name, setName] = useState(allName);
+  const filterName = (name) => {
+    const newItems = data.filter((item) => item.name === name);
+    setData(newItems);
+  };
+
+ 
+ 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Expierence</h1>
+      <Name name={allName} filterName={filterName} />
+      <Job Data={Data} />
     </div>
   );
 }
