@@ -5,9 +5,9 @@ function Name({ name, filterName }) {
     <div>
       {name.map((category) => {
         return (
-          <div key={category} onClick={() => filterName(category)}>
+          <span key={category} onClick={() => filterName(category)}>
             {category}
-          </div>
+          </span>
         );
       })}
     </div>
